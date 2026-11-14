@@ -1,0 +1,57 @@
+@import "tailwindcss" source("../");
+
+@theme {
+  --font-display: 'Baloo 2', ui-rounded, system-ui, sans-serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --color-ink: #2A1A3B;
+  --color-cream: #FFF8EC;
+  --color-sun: #FFC93C;
+  --color-coral: #FF5F45;
+  --color-peach: #FAD4BE;
+  --color-mint: #BFF0DC;
+  --color-sky: #BFE4FF;
+  --color-lilac: #E4D7FF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-coral px-7 py-3.5 font-bold text-white shadow-[0_4px_0_0_#C63E28] transition hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#C63E28] active:translate-y-0.5 active:shadow-[0_1px_0_0_#C63E28] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 font-bold text-cream shadow-[0_4px_0_0_#000] transition hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-none;
+  }
+  .field {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-4 focus:ring-sun/40;
+  }
+  .card {
+    @apply rounded-3xl border border-ink/10 bg-white;
+  }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-4deg) scale(1); }
+  50% { transform: rotate(4deg) scale(1.04); }
+}
+.animate-wobble { animation: wobble 2.4s ease-in-out infinite; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-wobble, .animate-marquee { animation: none; }
+}

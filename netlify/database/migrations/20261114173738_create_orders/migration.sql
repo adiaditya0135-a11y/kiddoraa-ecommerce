@@ -1,0 +1,22 @@
+CREATE TABLE "orders" (
+	"id" serial PRIMARY KEY,
+	"order_number" text NOT NULL UNIQUE,
+	"status" text NOT NULL,
+	"payment_method" text NOT NULL,
+	"email" text NOT NULL,
+	"phone" text NOT NULL,
+	"full_name" text NOT NULL,
+	"address1" text NOT NULL,
+	"address2" text DEFAULT '' NOT NULL,
+	"city" text NOT NULL,
+	"state" text NOT NULL,
+	"pincode" text NOT NULL,
+	"items" jsonb NOT NULL,
+	"subtotal" integer NOT NULL,
+	"shipping" integer NOT NULL,
+	"cod_fee" integer DEFAULT 0 NOT NULL,
+	"total" integer NOT NULL,
+	"stripe_session_id" text,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"paid_at" timestamp
+);
